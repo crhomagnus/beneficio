@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Márcio Silva Moreira | Avaliação para Benefícios INSS</title>
+    <meta name="description" content="Médico de Família com 20 anos de experiência em avaliações para benefícios INSS. Teleconsulta para orientação de perícia e emissão de laudos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -12,15 +13,16 @@
         :root {
             --primary: #1a3a6d;
             --secondary: #2d6a9c;
-            --accent: #3aaf85;
+            --accent: #3aaf85; /* Verde principal */
+            --cta-primary: #25D366; /* Verde WhatsApp para CTAs principais */
+            --cta-secondary: #3498db; /* Azul para CTAs secundários */
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --success: #28a745;
-            --danger: #dc3545;
+            --white: #ffffff;
             --border-radius: 8px;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow: 0 4px_12px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
         }
         
@@ -28,13 +30,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         
         body {
             font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--dark);
-            background-color: #f5f7fa;
+            background-color: var(--light);
             overflow-x: hidden;
         }
         
@@ -56,8 +59,8 @@
         .btn {
             display: inline-block;
             padding: 14px 32px;
-            background-color: var(--accent);
-            color: white;
+            background-color: var(--cta-primary);
+            color: var(--white);
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             text-decoration: none;
@@ -66,69 +69,81 @@
             cursor: pointer;
             transition: var(--transition);
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
         
         .btn:hover {
-            background-color: #2e9c74;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(58, 175, 133, 0.4);
+            background-color: #20b859;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
         }
         
         .btn-secondary {
-            background-color: var(--primary);
+            background-color: var(--cta-secondary);
         }
         
         .btn-secondary:hover {
-            background-color: #0f2a52;
+            background-color: #2980b9;
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
         }
         
         section {
             padding: 80px 0;
         }
-        
-        .text-center {
+
+        .section-header {
             text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .section-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--gray);
         }
         
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 3px solid var(--accent);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-icon {
-            background-color: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 24px;
+            padding: 15px 0;
         }
         
         .logo-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 24px;
             color: var(--primary);
         }
         
@@ -143,7 +158,7 @@
         }
         
         nav ul li {
-            margin-left: 30px;
+            margin-left: 35px;
         }
         
         nav ul li a {
@@ -152,103 +167,115 @@
             font-weight: 600;
             transition: color 0.3s ease;
             font-size: 16px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
         }
         
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a.active-link {
             color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav-cta a {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 5px;
+            border-bottom: none !important;
+        }
+         .nav-cta a:hover {
+            color: var(--white);
+            background-color: #2e9c74;
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             color: var(--primary);
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a3a6d 0%, #2d6a9c 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
             padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center bottom;
+            text-align: center;
         }
         
         .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 650px;
+            max-width: 750px;
+            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 42px;
+            font-size: 44px;
             margin-bottom: 20px;
-            color: white;
+            color: var(--white);
             line-height: 1.2;
         }
         
         .hero p {
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             opacity: 0.9;
         }
-        
-        .hero-badge {
-            background-color: rgba(255,255,255,0.15);
-            padding: 8px 20px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 20px;
-            font-weight: 600;
-            backdrop-filter: blur(4px);
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
-        .hero-badge i {
-            margin-right: 8px;
+        /* Stats Section */
+        #stats {
+            background-color: var(--light);
+            padding-top: 0;
+            margin-top: -60px; /* Pulls the section up */
+            position: relative;
+            z-index: 10;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            background-color: var(--white);
+            padding: 40px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-item i {
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-text {
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: 600;
         }
         
         /* About Section */
-        .about {
-            background-color: white;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 36px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-header h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
+        #about {
+            background-color: var(--white);
         }
         
         .about-content {
@@ -258,111 +285,114 @@
         }
         
         .about-image {
-            flex: 1;
+            flex: 0 0 400px;
+        }
+
+        .about-image img {
+            width: 100%;
             border-radius: var(--border-radius);
-            overflow: hidden;
             box-shadow: var(--shadow);
-            height: 450px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 120px;
         }
         
         .about-text {
             flex: 1;
         }
-        
+
         .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
+             font-size: 28px;
+             margin-bottom: 25px;
         }
         
-        .credentials {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: var(--light-gray);
-            border-left: 4px solid var(--accent);
-            border-radius: var(--border-radius);
+        .about-text ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
+        }
+
+        .about-text ul li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 15px;
         }
         
-        .credentials p {
-            margin-bottom: 10px;
-        }
-        
-        .credentials p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .highlight {
+        .about-text ul li::before {
+            content: '\f00c'; /* Font Awesome check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             color: var(--accent);
-            font-weight: 600;
+            position: absolute;
+            left: 0;
+            top: 2px;
         }
         
         /* Services Section */
-        .services {
-            background-color: #f5f7fa;
+        #services {
+            background-color: var(--light);
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
         .service-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: var(--border-radius);
-            overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            position: relative;
+            transition: var(--transition);
+            text-align: center;
+            padding: 40px 30px;
             border-top: 4px solid var(--accent);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
         }
         
         .service-icon {
-            height: 200px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 60px;
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
         
-        .service-content {
-            padding: 30px;
-        }
-        
-        .service-content h3 {
-            font-size: 22px;
+        .service-card h3 {
+            font-size: 24px;
             margin-bottom: 15px;
         }
         
         .service-price {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
-            color: var(--accent);
-            margin: 20px 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin: 25px 0;
         }
-        
+
         .service-price span {
             font-size: 16px;
             font-weight: 400;
             color: var(--gray);
         }
+
+        .service-value {
+            font-style: italic;
+            color: var(--gray);
+            margin-top: 20px;
+        }
         
         /* Benefits Section */
-        .benefits {
-            background: linear-gradient(135deg, #2d6a9c 0%, #1a3a6d 100%);
-            color: white;
+        #benefits {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        #benefits .section-header h2, #benefits .section-header p {
+            color: var(--white);
+        }
+        #benefits .section-header h2::after {
+            background-color: var(--cta-primary);
         }
         
         .benefits-grid {
@@ -373,156 +403,205 @@
         }
         
         .benefit-card {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 40px 25px;
             text-align: center;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.15);
             transition: var(--transition);
         }
         
         .benefit-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+            background-color: rgba(255,255,255,0.1);
         }
         
         .benefit-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 28px;
-            color: white;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--cta-primary);
         }
         
         .benefit-card h4 {
             font-size: 20px;
             margin-bottom: 15px;
-            color: white;
+            color: var(--white);
         }
         
         /* Process Section */
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
+        .process-timeline {
             position: relative;
+            max-width: 800px;
+            margin: 60px auto 0;
         }
-        
-        .process-steps::before {
-            content: "";
+
+        .process-timeline::after {
+            content: '';
             position: absolute;
-            top: 40px;
-            left: 0;
-            width: 100%;
-            height: 3px;
+            width: 4px;
             background-color: var(--light-gray);
-            z-index: 0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
         }
-        
-        .step {
-            text-align: center;
+
+        .process-step {
+            padding: 10px 40px;
             position: relative;
-            z-index: 1;
-            flex: 1;
-            max-width: 200px;
+            background-color: inherit;
+            width: 50%;
         }
-        
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, var(--accent), #2e9c74);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 30px;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            box-shadow: var(--shadow);
-        }
-        
-        .step h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        /* Testimonials */
-        .testimonials {
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
             background-color: white;
+            border: 4px solid var(--accent);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .process-step.left {
+            left: 0;
+            text-align: right;
+        }
+
+        .process-step.right {
+            left: 50%;
+        }
+
+        .process-step.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 38px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+
+        .process-step.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 38px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        .process-step.right::after {
+            left: -13px;
+        }
+
+        .step-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+        }
+        .process-step.left .step-content {
+            border-right: 4px solid var(--accent);
+            border-left: none;
+        }
+
+        .step-icon {
+            position: absolute;
+            top: 25px;
+            font-size: 32px;
+            color: var(--accent);
+            z-index: 2;
+        }
+
+        .process-step.left .step-icon {
+             right: -60px;
+        }
+         .process-step.right .step-icon {
+             left: -60px;
+        }
+
+        .step-content h4 {
+            font-size: 20px;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: var(--light);
         }
         
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
         .testimonial-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 35px;
             box-shadow: var(--shadow);
             position: relative;
-            border-left: 4px solid var(--accent);
+            border-left: 5px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
         .testimonial-text {
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
+            color: var(--gray);
+            flex-grow: 1;
         }
         
         .testimonial-text::before {
-            content: """;
+            content: "\f10d";
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
-            top: -20px;
-            left: -10px;
-            font-size: 80px;
-            font-family: Georgia, serif;
+            top: -15px;
+            left: -15px;
+            font-size: 30px;
             color: var(--light-gray);
-            line-height: 1;
             z-index: 0;
         }
         
         .testimonial-author {
             display: flex;
             align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-weight: 700;
-            color: white;
+            margin-top: auto;
         }
         
         .author-info h4 {
-            margin-bottom: 5px;
+            margin-bottom: 0;
+            font-size: 18px;
         }
         
         .author-info p {
             font-size: 14px;
-            opacity: 0.8;
+            color: var(--gray);
+            margin-bottom: 0;
         }
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(135deg, #3aaf85 0%, #2e9c74 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--cta-primary) 0%, var(--accent) 100%);
+            color: var(--white);
             text-align: center;
         }
         
@@ -534,7 +613,7 @@
         .cta h2 {
             font-size: 36px;
             margin-bottom: 20px;
-            color: white;
+            color: var(--white);
         }
         
         .cta p {
@@ -542,17 +621,24 @@
             margin-bottom: 30px;
             opacity: 0.9;
         }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+
+        .cta-seal {
             margin-top: 30px;
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--white);
+            font-weight: 600;
+        }
+
+        .cta-seal i {
+            margin-right: 8px;
         }
         
         /* FAQ Section */
-        .faq {
-            background-color: #f5f7fa;
+        #faq {
+            background-color: var(--light);
         }
         
         .faq-grid {
@@ -561,31 +647,37 @@
         }
         
         .faq-item {
-            background-color: white;
+            background-color: var(--white);
             border-radius: var(--border-radius);
             margin-bottom: 15px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             overflow: hidden;
+            border: 1px solid var(--light-gray);
         }
         
         .faq-question {
             padding: 20px;
             font-weight: 600;
+            font-size: 18px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--primary);
         }
         
         .faq-question i {
             transition: transform 0.3s ease;
+            color: var(--accent);
         }
         
         .faq-answer {
             padding: 0 20px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            color: var(--gray);
+            border-top: 1px solid transparent;
         }
         
         .faq-item.active .faq-question i {
@@ -595,30 +687,32 @@
         .faq-item.active .faq-answer {
             padding: 0 20px 20px;
             max-height: 500px;
+            border-top: 1px solid var(--light-gray);
         }
         
         /* Contact Section */
-        .contact {
-            background-color: white;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 50px;
+        #contact {
+            background-color: var(--white);
         }
         
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+            max-width: 700px;
             margin: 0 auto;
-            max-width: 600px;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            text-align: left;
         }
         
         .contact-item {
             display: flex;
-            gap: 15px;
+            align-items: flex-start;
+            gap: 20px;
         }
         
         .contact-icon {
@@ -633,14 +727,27 @@
             font-size: 20px;
             flex-shrink: 0;
         }
+
+        .contact-item h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .contact-item p, .contact-item a {
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0;
+        }
+         .contact-item a:hover {
+            color: var(--accent);
+        }
         
         /* WhatsApp Button */
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25D366;
-            color: white;
+            background-color: var(--cta-primary);
+            color: var(--white);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -655,26 +762,27 @@
         }
         
         .whatsapp-button:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
             box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
         
         /* Footer */
         footer {
             background-color: var(--primary);
-            color: white;
+            color: var(--white);
             padding: 60px 0 30px;
+            font-size: 15px;
         }
         
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
             margin-bottom: 40px;
         }
         
         .footer-col h3 {
-            color: white;
+            color: var(--white);
             font-size: 20px;
             margin-bottom: 25px;
             position: relative;
@@ -699,14 +807,15 @@
             margin-bottom: 12px;
         }
         
-        .footer-col ul li a {
+        .footer-col ul li a, .footer-col p {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
         .footer-col ul li a:hover {
-            color: white;
+            color: var(--white);
+            padding-left: 5px;
         }
         
         .footer-bottom {
@@ -717,70 +826,38 @@
             color: rgba(255,255,255,0.6);
         }
         
-        .disclaimer {
-            background-color: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        
-        /* Stats */
-        .stats {
-            background-color: white;
-            padding: 60px 0;
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        .stat-text {
-            font-size: 18px;
-            color: var(--dark);
+        .footer-bottom p {
+            margin: 0;
+            line-height: 1.5;
         }
         
         /* Responsive Design */
         @media (max-width: 991px) {
             .about-content {
                 flex-direction: column;
-            }
-            
-            .about-image {
-                width: 100%;
-            }
-            
-            .hero-content {
                 text-align: center;
-                margin: 0 auto;
             }
-            
-            .process-steps {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 40px;
+            .about-text ul {
+                text-align: left;
+                display: inline-block;
             }
-            
-            .process-steps::before {
-                display: none;
+
+            .process-timeline::after { display: none; }
+            .process-step { width: 100%; padding-left: 0; padding-right: 0; }
+            .process-step.right { left: 0; }
+            .process-step.left::before, .process-step.right::before { display: none; }
+            .process-step.left::after, .process-step.right::after { display: none; }
+            .step-icon { display: none; }
+            .process-step.left, .process-step.right { text-align: left; }
+            .step-content { border-left: 4px solid var(--accent); border-right: none; }
+             
+            .footer-grid {
+                 grid-template-columns: 1fr;
+                 text-align: center;
             }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
+             .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
         
@@ -795,10 +872,10 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: white;
+                background-color: var(--white);
                 flex-direction: column;
                 box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-                padding: 20px 0;
+                padding: 10px 0;
             }
             
             nav ul.active {
@@ -807,8 +884,20 @@
             
             nav ul li {
                 margin: 0;
-                padding: 12px 30px;
+                width: 100%;
+                text-align: center;
             }
+            nav ul li a {
+                padding: 15px 30px;
+                display: block;
+                border-bottom: 1px solid var(--light-gray);
+            }
+             nav ul li a:hover, nav ul li a.active-link {
+                border-bottom: 1px solid var(--light-gray);
+             }
+             .nav-cta {
+                 padding: 15px 30px;
+             }
             
             .mobile-menu-btn {
                 display: block;
@@ -825,27 +914,13 @@
             section {
                 padding: 60px 0;
             }
-            
-            .stats-container {
-                flex-direction: column;
-                gap: 30px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-stethoscope"></i>
-                </div>
-                <div class="logo-text">Dr. Márcio <span>Moreira</span></div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="#" class="logo-text">Dr. Márcio <span>Moreira</span></a>
             <nav>
                 <ul id="navMenu">
                     <li><a href="#about">Sobre</a></li>
@@ -854,512 +929,449 @@
                     <li><a href="#process">Como Funciona</a></li>
                     <li><a href="#testimonials">Depoimentos</a></li>
                     <li><a href="#faq">Perguntas</a></li>
-                    <li><a href="https://wa.me/5555997154983">Contato</a></li>
+                    <li class="nav-cta"><a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o." target="_blank">WhatsApp</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-shield-alt"></i> Avaliação Médica
-                </div>
-                <h1>Avaliação Médica para Benefícios do INSS com 20 Anos de Experiência</h1>
-                <p>Como médico atuante em Medicina da Família com CRM/RS 27604, ofereço teleconsultas para avaliar seu caso e orientar sobre a viabilidade de benefícios junto ao INSS, seguindo rigorosamente todas as normas éticas e legais.</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/5555997154983" class="btn">Falar com Dr. Márcio</a>
-                    <a href="#services" class="btn btn-secondary">Ver Serviços</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container stats-container">
-            <div class="stat-item">
-                <div class="stat-number">20+</div>
-                <div class="stat-text">Anos de Experiência</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">80%</div>
-                <div class="stat-text">Taxa de Sucesso</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">5000+</div>
-                <div class="stat-text">Atendimentos Realizados</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">90</div>
-                <div class="stat-text">Reais por Consulta</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Dr. Márcio Silva Moreira</h2>
-                <p>Médico com 20 anos de experiência em Medicina da Família</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <i class="fas fa-user-md"></i>
-                </div>
-                <div class="about-text">
-                    <h3>Experiência e Compromisso com a Verdade Médica</h3>
-                    <p>Com duas décadas de atuação em Medicina da Família, adquiri vasta experiência emitindo milhares de laudos médicos. Minha prática é fundamentada na ética e na honestidade, atestando apenas casos em que o paciente realmente apresenta a patologia e tem direito ao benefício. Muitas vezes, o sistema não reconhece esse direito, e minha missão é garantir que os pacientes tenham acesso à justiça, assegurando benefícios a quem realmente precisa, como parte essencial da atenção à saúde.</p>
-                    <p>Minha abordagem considera aspectos físicos, psicológicos e sociais, garantindo uma avaliação completa e precisa, sempre em conformidade com a legislação brasileira e as normas do Conselho Federal de Medicina.</p>
-                    
-                    <div class="credentials">
-                        <p><span class="highlight">Registro profissional:</span> CRM/RS 27604</p>
-                        <p><span class="highlight">Área de atuação:</span> Medicina da Família</p>
-                        <p><span class="highlight">Atendimentos realizados:</span> Milhares de pacientes avaliados</p>
-                        <p><span class="highlight">Taxa de sucesso:</span> Superior a 80% em processos bem fundamentados</p>
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Avaliação Médica para Benefícios do INSS com 20 Anos de Experiência</h1>
+                    <p>Obtenha uma avaliação ética, detalhada e humana para orientar seu pedido de benefício. Teleconsultas disponíveis para todo o Brasil.</p>
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o." target="_blank" class="btn"><i class="fab fa-whatsapp"></i> Falar com Dr. Márcio</a>
+                        <a href="#services" class="btn btn-secondary">Ver Serviços</a>
                     </div>
-                    
-                    <p>Meu compromisso é oferecer uma avaliação médica honesta e criteriosa, fornecendo orientação clara sobre a viabilidade do benefício pretendido, sempre zelando pela saúde e pelos direitos dos meus pacientes.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Serviços de Teleconsulta</h2>
-                <p>Consultas médicas para avaliação de benefícios do INSS</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
+        <section id="stats">
+            <div class="container">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <i class="fas fa-medal"></i>
+                        <div class="stat-number">20+</div>
+                        <div class="stat-text">Anos de Experiência</div>
                     </div>
-                    <div class="service-content">
+                    <div class="stat-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="stat-number">80%</div>
+                        <div class="stat-text">Taxa de Sucesso</div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-text">Atendimentos</div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div class="stat-number">R$90</div>
+                        <div class="stat-text">Por Consulta</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/400x450/1a3a6d/ffffff?text=Dr.+M%C3%A1rcio+Moreira" alt="Dr. Márcio Silva Moreira">
+                    </div>
+                    <div class="about-text">
+                        <h3>Compromisso com a Verdade Médica e o Seu Direito</h3>
+                        <p>Sou o Dr. Márcio Silva Moreira (CRM/RS 27604), médico com duas décadas de atuação em Medicina da Família. Minha missão é oferecer uma avaliação médica justa e criteriosa, baseada na ética e na honestidade, para pacientes que buscam seus direitos junto ao INSS.</p>
+                        <p>Acredito que o acesso a benefícios é parte essencial do cuidado à saúde. Por isso, minha abordagem considera todos os aspectos da sua condição — físicos, psicológicos e sociais — para construir um parecer robusto e verdadeiro.</p>
+                        <ul>
+                            <li><strong>Registro Profissional:</strong> CRM/RS 27604</li>
+                            <li><strong>Abordagem Holística:</strong> Avaliação completa do seu quadro clínico.</li>
+                            <li><strong>Foco na Ética:</strong> Atesto apenas casos onde há real comprovação da patologia.</li>
+                            <li><strong>Alta Taxa de Sucesso:</strong> Experiência que se traduz em resultados para os pacientes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Modalidades de Teleconsulta</h2>
+                    <p>Escolha o formato de atendimento mais conveniente para você. O valor é o mesmo para todas as modalidades.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-video"></i></div>
                         <h3>Consulta por Videoconferência</h3>
-                        <p>Avaliação médica completa através de chamada de vídeo, permitindo uma interação mais próxima e detalhada do seu caso clínico.</p>
-                        <ul>
-                            <li>Duração de 40-60 minutos</li>
-                            <li>Análise completa do caso</li>
-                            <li>Discussão de documentos médicos</li>
-                            <li>Orientações personalizadas</li>
-                        </ul>
-                        <div class="service-price">R$ 90,00 <span>por consulta</span></div>
-                        <a href="https://wa.me/5555997154983" class="btn">Agendar Agora</a>
+                        <p>Interação direta e detalhada por chamada de vídeo para uma análise completa do seu caso.</p>
+                        <div class="service-price">R$ 90,00 <span>/ consulta</span></div>
+                        <a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+quero+agendar+uma+consulta+por+V%C3%8DDEO." target="_blank" class="btn">Agendar Vídeo</a>
                     </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="service-content">
+                    
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-comments"></i></div>
                         <h3>Consulta por Chat</h3>
-                        <p>Avaliação médica através de mensagens de texto em tempo real, ideal para quem prefere comunicação escrita.</p>
-                        <ul>
-                            <li>Atendimento com hora marcada</li>
-                            <li>Tempo necessário para avaliação</li>
-                            <li>Troca de documentos digitalizados</li>
-                            <li>Respostas detalhadas por escrito</li>
-                        </ul>
-                        <div class="service-price">R$ 90,00 <span>por consulta</span></div>
-                        <a href="https://wa.me/5555997154983" class="btn">Agendar Agora</a>
+                        <p>Atendimento prático e objetivo por mensagens de texto, com horário marcado, para quem prefere a comunicação escrita.</p>
+                        <div class="service-price">R$ 90,00 <span>/ consulta</span></div>
+                        <a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+quero+agendar+uma+consulta+por+CHAT." target="_blank" class="btn">Agendar Chat</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-microphone-alt"></i></div>
+                        <h3>Consulta por Áudio</h3>
+                        <p>Flexibilidade para enviar e receber mensagens de áudio detalhadas, permitindo uma avaliação completa no seu tempo.</p>
+                        <div class="service-price">R$ 90,00 <span>/ consulta</span></div>
+                        <a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+quero+agendar+uma+consulta+por+%C3%81UDIO." target="_blank" class="btn">Agendar Áudio</a>
                     </div>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Consulta por Mensagem de Áudio</h3>
-                        <p>Avaliação médica através de troca de mensagens de áudio, combinando praticidade e comunicação pessoal.</p>
-                        <ul>
-                            <li>Flexibilidade de horários</li>
-                            <li>Mensagens detalhadas em áudio</li>
-                            <li>Análise de documentos enviados</li>
-                            <li>Respostas gravadas com orientações</li>
-                        </ul>
-                        <div class="service-price">R$ 90,00 <span>por consulta</span></div>
-                        <a href="https://wa.me/5555997154983" class="btn">Agendar Agora</a>
-                    </div>
+                 <div class="text-center service-value">
+                    <p>Este valor é um investimento acessível e competitivo para quem busca um benefício justo no INSS.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits" id="benefits">
-        <div class="container">
-            <div class="section-header">
-                <h2>Vantagens da Minha Avaliação</h2>
-                <p>Por que escolher meu serviço para sua avaliação do INSS</p>
-            </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h4>Avaliação Experiente</h4>
-                    <p>Foco em casos de benefícios do INSS com 20 anos de experiência</p>
+        <section id="benefits">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Vantagens da Minha Avaliação</h2>
+                    <p>Garantia de um serviço profissional, ético e focado no seu bem-estar.</p>
                 </div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-file-medical"></i>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-medal"></i></div>
+                        <h4>Avaliação Experiente</h4>
+                        <p>20 anos de prática médica aplicados para fortalecer sua solicitação.</p>
                     </div>
-                    <h4>Documentação Precisa</h4>
-                    <p>Elaboração de laudos e atestados seguindo todas as normas legais</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-lock"></i>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-file-alt"></i></div>
+                        <h4>Documentação Precisa</h4>
+                        <p>Laudos e atestados claros, detalhados e alinhados às exigências legais.</p>
                     </div>
-                    <h4>Sigilo Garantido</h4>
-                    <p>Todas as informações são tratadas com total confidencialidade</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-gavel"></i>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Sigilo Garantido</h4>
+                        <p>Suas informações são tratadas com total confidencialidade e segurança.</p>
                     </div>
-                    <h4>Conformidade Legal</h4>
-                    <p>Atendimento dentro das normas do CFM e legislação brasileira</p>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-gavel"></i></div>
+                        <h4>Conformidade Legal</h4>
+                        <p>Atendimento 100% regulamentado pelas normas do CFM e legislação.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Process Section -->
-    <section class="process" id="process">
-        <div class="container">
-            <div class="section-header">
-                <h2>Como Funciona a Teleconsulta</h2>
-                <p>Processo simples e eficiente para sua avaliação médica</p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h4>Agendamento</h4>
-                    <p>Entre em contato e escolha a modalidade de atendimento que preferir</p>
+        <section id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Como Funciona a Teleconsulta</h2>
+                    <p>Um processo simples, transparente e eficiente em 4 etapas.</p>
                 </div>
                 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h4>Pré-Consulta</h4>
-                    <p>Envie seus documentos médicos com antecedência para análise</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h4>Consulta</h4>
-                    <p>Realizamos a teleconsulta na modalidade escolhida</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h4>Laudo e Orientação</h4>
-                    <p>Receba orientações claras sobre a viabilidade do benefício</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Depoimentos de Pacientes</h2>
-                <p>O que dizem quem já realizou a avaliação médica</p>
-            </div>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "O Dr. Márcio foi extremamente atencioso e detalhista na avaliação do meu caso. Sua orientação foi fundamental para o sucesso do meu benefício no INSS. Recomendo muito seu trabalho!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Ana Lúcia</h4>
-                            <p>Porto Alegre/RS</p>
+                <div class="process-timeline">
+                    <div class="process-step left">
+                         <div class="step-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="step-content">
+                            <h4>1. Agendamento</h4>
+                            <p>Entre em contato via WhatsApp, escolha a modalidade e o melhor horário para você.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Depois de ter meu pedido negado duas vezes, procurei o Dr. Márcio. Sua avaliação minuciosa e o laudo detalhado fizeram toda a diferença. Finalmente consegui meu benefício!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">C</div>
-                        <div class="author-info">
-                            <h4>Carlos Mendes</h4>
-                            <p>Canoas/RS</p>
+                    <div class="process-step right">
+                         <div class="step-icon"><i class="fas fa-folder-open"></i></div>
+                        <div class="step-content">
+                            <h4>2. Pré-Consulta</h4>
+                            <p>Envie seus documentos e exames médicos com antecedência para uma análise inicial.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "A consulta por videoconferência foi muito prática e eficiente. O Dr. Márcio explicou tudo com clareza e me orientou sobre os passos necessários. Profissional altamente qualificado!"
+                    <div class="process-step left">
+                        <div class="step-icon"><i class="fas fa-laptop-medical"></i></div>
+                        <div class="step-content">
+                            <h4>3. Consulta</h4>
+                            <p>Realizamos a teleconsulta na modalidade escolhida para uma avaliação completa do seu caso.</p>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
-                        <div class="author-info">
-                            <h4>Mariana Torres</h4>
-                            <p>Pelotas/RS</p>
+                    <div class="process-step right">
+                        <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+                        <div class="step-content">
+                            <h4>4. Laudo e Orientação</h4>
+                            <p>Receba o laudo (se aplicável) e orientações claras sobre a viabilidade do seu benefício.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Precisa de Avaliação para Benefício do INSS?</h2>
-                <p>Agende sua teleconsulta hoje mesmo e receba orientação experiente sobre a viabilidade do seu benefício. Consultas acessíveis e com hora marcada.</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/5555997154983" class="btn btn-secondary">Falar com Dr. Márcio</a>
-                    <a href="tel:+5551997154983" class="btn">Ligar Agora</a>
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Depoimentos de Pacientes</h2>
+                    <p>Histórias de quem confiou no meu trabalho e obteve resultados.</p>
+                </div>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "O Dr. Márcio foi extremamente atencioso e detalhista na avaliação do meu caso. Sua orientação foi fundamental para o sucesso do meu benefício no INSS. Recomendo muito seu trabalho!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Ana Lúcia</h4>
+                                <p>Paciente de Porto Alegre/RS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Depois de ter meu pedido negado duas vezes, procurei o Dr. Márcio. Sua avaliação minuciosa e o laudo detalhado fizeram toda a diferença. Finalmente consegui meu benefício!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Carlos Mendes</h4>
+                                <p>Paciente de Canoas/RS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "A consulta por videoconferência foi muito prática e eficiente. O Dr. Márcio explicou tudo com clareza e me orientou sobre os passos necessários. Profissional altamente qualificado!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Mariana Torres</h4>
+                                <p>Paciente de Pelotas/RS</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <h2>Perguntas Frequentes</h2>
-                <p>Tire suas dúvidas sobre o processo de avaliação</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Qual a diferença entre sua avaliação e a perícia do INSS?
-                        <i class="fas fa-chevron-down"></i>
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Pronto para Dar o Próximo Passo?</h2>
+                    <p>Não deixe a incerteza adiar seu direito. Agende sua avaliação hoje mesmo e tenha o conforto de um atendimento remoto, experiente e dedicado.</p>
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+quero+iniciar+minha+avalia%C3%A7%C3%A3o." target="_blank" class="btn"><i class="fab fa-whatsapp"></i> Agendar Minha Avaliação</a>
                     </div>
-                    <div class="faq-answer">
-                        <p>Minha avaliação é uma consulta médica que analisa seu caso de forma independente, fornecendo orientação sobre a viabilidade do benefício e preparando você para a perícia oficial do INSS. Não substitui a perícia do INSS, mas aumenta suas chances de sucesso com uma documentação bem fundamentada.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Quais documentos preciso enviar antes da consulta?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Recomendo enviar com antecedência: documentos de identificação, exames médicos recentes, relatórios médicos, receitas de medicamentos em uso, e qualquer documento relacionado à sua condição de saúde. Quanto mais completo o histórico, mais precisa será a avaliação.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        O senhor emite atestados ou laudos médicos?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim, após a avaliação médica, emito documentos médicos como laudos e atestados quando clinicamente indicado, sempre fundamentados na verdade médica e de acordo com a legislação vigente. É importante destacar que documentos médicos só são emitidos quando há comprovação clínica da condição relatada.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Como é o pagamento da consulta?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>O pagamento da consulta no valor de R$ 90,00 é realizado por transferência bancária ou PIX após o agendamento e antes da realização da teleconsulta. Enviaremos todas as instruções após o agendamento.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        A teleconsulta é válida para todo o Brasil?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim, atendo pacientes de todo o território nacional. A teleconsulta está regulamentada pelo Conselho Federal de Medicina e é válida em todo o Brasil, seguindo as normas da Resolução CFM nº 2.314/2022.</p>
+                    <div class="cta-seal">
+                        <i class="fas fa-desktop"></i> Avaliação 100% Online e Segura
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Agende sua Consulta</h2>
-                <p>Entre em contato para marcar sua avaliação médica</p>
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Perguntas Frequentes</h2>
+                    <p>Tire suas principais dúvidas sobre o processo de avaliação.</p>
+                </div>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Qual a diferença entre sua avaliação e a perícia do INSS?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Minha avaliação é uma consulta médica que analisa seu caso de forma independente, fornecendo orientação sobre a viabilidade do benefício e um laudo que fortalece sua documentação. Ela não substitui a perícia oficial do INSS, mas aumenta significativamente suas chances de sucesso ao preparar você com um embasamento técnico robusto.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Quais documentos preciso enviar antes da consulta?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Recomendo enviar com antecedência: documento de identificação, exames, relatórios e atestados médicos recentes, receitas de medicamentos em uso e qualquer outro documento que comprove sua condição de saúde. Quanto mais completo o histórico, mais precisa será a avaliação.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            O senhor emite atestados ou laudos médicos?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim. Após a avaliação e se clinicamente justificado, emito laudos e atestados detalhados. Meu compromisso é com a verdade médica, portanto, os documentos são emitidos apenas quando há comprovação clínica da condição, seguindo rigorosamente as normas do CFM.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Como funciona o pagamento da consulta?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>O pagamento de R$ 90,00 é realizado de forma segura via PIX antes do início da teleconsulta. Todas as instruções serão fornecidas no momento do agendamento.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            A teleconsulta é válida para todo o Brasil?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim. O atendimento por telemedicina é regulamentado pelo Conselho Federal de Medicina (Resolução CFM nº 2.314/2022) e tem validade em todo o território nacional. Atendo pacientes de todos os estados do Brasil.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="contact-grid">
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Informações de Contato</h2>
+                     <p>Estou à disposição para atendê-lo. Veja abaixo meus canais de contato e horário de atendimento.</p>
+                </div>
+                
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-grid">
+                         <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h4>Telefone / WhatsApp</h4>
+                                <p><a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es." target="_blank">(55) 99715-4983</a></p>
+                            </div>
                         </div>
-                        <div>
-                            <h4>Localização</h4>
-                            <p>Rua Presidente Kennedy, 155, Alpestre - RS, CEP: 98480-000</p>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                         <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h às 24h<br>Sábado e comingo: 8h às 22h</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>contato@drmarciomoreira.com</p>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Localização (Referência)</h4>
+                                <p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Presidente+Kennedy,+155,+Alpestre+-+RS" target="_blank">Rua Presidente Kennedy, 155, Alpestre - RS</a></p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Telefone</h4>
-                            <p>(55) 99715-4983</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4>Horário de Atendimento</h4>
-                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
-                        </div>
-                    </div>
-                    
-                    <div class="disclaimer">
-                        <p><strong>Importante:</strong> Esta consulta tem caráter avaliativo e de orientação. O resultado da perícia do INSS depende de diversos fatores além da avaliação médica. O Dr. Márcio segue rigorosamente o Código de Ética Médica e a legislação vigente.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Dr. Márcio Silva Moreira</h3>
-                    <p>Médico com 20 anos de experiência em Medicina da Família, atuando na avaliação para benefícios do INSS.</p>
-                    <p>CRM/RS 27604</p>
+                    <p>Médico de Família (CRM/RS 27604) dedicado a avaliações éticas e humanizadas para benefícios do INSS em todo o Brasil.</p>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Links Rápidos</h3>
+                    <h3>Navegação</h3>
                     <ul>
                         <li><a href="#about">Sobre</a></li>
                         <li><a href="#services">Serviços</a></li>
                         <li><a href="#process">Como Funciona</a></li>
-                        <li><a href="#faq">Perguntas Frequentes</a></li>
-                        <li><a href="https://wa.me/5555997154983">Contato</a></li>
+                        <li><a href="#faq">Perguntas</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Serviços</h3>
                     <ul>
-                        <li><a href="#services">Consulta por Videoconferência</a></li>
+                        <li><a href="#services">Consulta por Vídeo</a></li>
                         <li><a href="#services">Consulta por Chat</a></li>
                         <li><a href="#services">Consulta por Áudio</a></li>
-                        <li><a href="#services">Avaliação para Benefício INSS</a></li>
-                        <li><a href="#services">Orientação Médica</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contato</h3>
-                    <ul>
-                        <li><i class="fas fa-phone-alt"></i> (55) 99715-4983</li>
-                        <li><i class="fas fa-envelope"></i> contato@drmarciomoreira.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Rua Presidente Kennedy, 155, Alpestre - RS</li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Dr. Márcio Silva Moreira - CRM/RS 27604. Todos os direitos reservados.</p>
-                <p>Esta página segue as normas do Conselho Federal de Medicina para telemedicina (Resolução CFM nº 2.314/2022) e as diretrizes éticas da profissão médica.</p>
+                <p>© 2024 Dr. Márcio Silva Moreira. Todos os direitos reservados. Atendimento em conformidade com a Resolução CFM nº 2.314/2022.</p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/5555997154983" class="whatsapp-button" target="_blank">
+    <a href="https://wa.me/5555997154983?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+uma+informa%C3%A7%C3%A3o." class="whatsapp-button" target="_blank" aria-label="Contato via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
             
-            question.addEventListener('click', () => {
-                item.classList.toggle('active');
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navMenu.classList.contains('active');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
             });
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', () => {
                     if (navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
+                         mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     }
-                }
+                });
             });
-        });
-        
-        // Auto close mobile menu when clicking a link
-        document.querySelectorAll('#navMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                }
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Smooth Scrolling with offset for sticky header
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
